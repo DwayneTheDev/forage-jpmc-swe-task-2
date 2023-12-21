@@ -50,6 +50,12 @@ class Graph extends Component<IProps, {}> {
 
       // Add more Perspective configurations here.
       elem.load(this.table);
+      elem.setAttribute('view', 'y_line');  // using y_line for continuous line graph
+      elem.setAttribute('column-pivots', '["stock"]');   // column pivots set to 'stock'
+      elem.setAttribute('row-pivots', '["timestamp"]');  // maps each data point on the timestamp
+      elem.setAttribute('columns', '["top_ask_price"]'); // focuses on the top_ask_price along the y_axis
+      // consolidates duplicate data to a single data point
+      elem.setAttribute('aggregates','{"stock":"distinct count","top_ask_price":"avg","top_bid_price":"avg","timestamp":"distinct count"}');
     }
   }
 
